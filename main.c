@@ -8,20 +8,10 @@ bool inputChecker(int passArgs);
 
 int main(int argc, char** argv) {
     const char blankSpace = '*';
-    const char pieces[] = "\/|-+";
+    const char pieces[] = "/-+\|";
 
-    if (inputChecker(argc)) {
-        return 0;
-    }
-
-    //checkConditions(argc, argv);
-
-    int r = atoi(argv[1]);
-    int c = atoi(argv[2]);
-    int w = atoi(argv[3]);
-
-    const int numRows = r;
-    const int numCols = c;
+    const int numRows = 10;
+    const int numCols = 10;
 
     int rowPlayed;
     int colPlayed;
