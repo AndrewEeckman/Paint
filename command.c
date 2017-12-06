@@ -6,36 +6,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void getArgsByCommand(char command, int *numArgsNeeded, int *charCount, int *intCount);
 
-void getCommand(char** canvas, const int num_rows, const int num_columns, const char blank_space, char *command,
-             int* row, int* col) {
+void getCommand(char** canvas, const int numRows, const int numColumns, const char blank_space, char *command,
+             int *row_start, int *col_start, int *row_end, int *col_end,
+                int *num_rows, int *num_cols,
+                char *rowOrCol, int *pos,
+                int *row, int *col,
+                char fileName[]) {
+
     int num_args_read = 1;
     int num_args_needed = 1;
-
-    // Counters to receive a particular number of chars and ints from the line
-    // FIXME: CANNOT DETECT OVERFLOW!!!!!
-    int charCount = 0;
-    int intCount = 0;
-
-    // Second Character used for the Addition & Deletion Commands
-    char comSubsetForAddDel = ' ';
-
 
     //do {
         printf("Enter your command: ");
         scanf("%c", &(*command));
 
-        int *x1, *y1, *x2, *y2;
-
         if(*command == 'w') {
             num_args_needed = 4;
-            num_args_read = scanf(" %d %d %d %d", x1, y1, x2, y2);
+            num_args_read = scanf(" %d %d %d %d", row_start, col_start, row_end, col_end);
 
             if(num_args_read != num_args_needed) {
                 printf("NOOOOOOO");
             } else {
-                printf("\n%c %d %d %d %d", *command, *x1, *y1, *x2, *y2);
+                printf("\n%c %d %d %d %d", *command, *row_start, *col_start, *row_end, *col_end);
             }
 
         }

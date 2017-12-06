@@ -70,7 +70,12 @@ int main(int argc, char** argv) {
 
         displayCanvas(canvas, numRows, numCols);
 
-        getCommand(canvas, numRows, numCols, blankSpace, &command, &row, &col);
+        getCommand(canvas, numRows, numCols, blankSpace, &command,
+                   &row_start, &col_start, &row_end, &col_end,
+                   &num_rows, &num_cols,
+                   &rowOrCol, &pos,
+                   &row, &col, &fileName
+                    );
         /*
         makeMove(board, rowPlayed, colPlayed, pieces[playerTurn]);
         playerTurn = changeTurn(playerTurn);
