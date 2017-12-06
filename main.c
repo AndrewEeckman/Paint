@@ -40,19 +40,6 @@ int main(int argc, char** argv) {
 
         displayCanvas(canvas, numRows, numCols);
 
-        char ch = ' ';
-        char cha = ' ';
-        int a = 0;
-        int b = 0;
-        printf("\n");
-        printf("Enter: ");
-        int args = 1 ;
-        scanf("%c", &ch);
-
-        while(scanf("\n")) {
-            scanf("");
-        }
-
         //getCommand(canvas, numRows, numCols, blankSpace, &command, &rowPlayed, &colPlayed);
         /*
         makeMove(board, rowPlayed, colPlayed, pieces[playerTurn]);
