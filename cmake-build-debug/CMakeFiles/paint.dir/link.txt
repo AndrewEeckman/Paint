@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/paint.dir/main.c.o CMakeFiles/paint.dir/canvas.c.o CMakeFiles/paint.dir/command.c.o  -o paint 
+=======
+/Library/Developer/CommandLineTools/usr/bin/cc -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/paint.dir/main.c.o  -o paint 
+>>>>>>> f8252e6cb9fa38dfff2376d31e3a321ec4a498df
