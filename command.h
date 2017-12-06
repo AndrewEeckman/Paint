@@ -5,7 +5,7 @@
 #ifndef PAINT_COMMAND_H
 #define PAINT_COMMAND_H
 
-void commandChecker(char * commandArgs[], argsNeeded );
+//void commandChecker(char * commandArgs[], int argsNeeded );
 void quitProg();
 void printHelp();
 

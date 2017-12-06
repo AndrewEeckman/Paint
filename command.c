@@ -4,25 +4,7 @@
 
 #include "command.h"
 #include <stdio.h>
-
-void commandChecker(char * commandArgs[], argsNeeded ) {
-    numsRead = 0;
-    commmandArgs[argsNeeded];
-    char currentRead;
-
-    while(currentRead != '\n'){
-
-        scanf(" %c", &currentRead);
-        commandArgs[numRead] = currentRead;
-
-        numRead++;
-    }
-    if(numRead != argsNeeded) {
-        printf("Wrong number of command line arguements entered.\n");
-        printf("Usage: ./paint.out [num_rows num_cols]\n");
-    }
-}
-
+#include <stdlib.h>
 
 void quitProg() {
        exit (0);
@@ -41,6 +23,29 @@ void printHelp(){
     printf("Load: l file_name\n");
 }
 
+
+/*
+ * === Tucker's Attempt at dynamic input ===
+void commandChecker(char * commandArgs[], argsNeeded ) {
+    numsRead = 0;
+    commmandArgs[argsNeeded];
+    char currentRead;
+
+    while(currentRead != '\n'){
+
+        scanf(" %c", &currentRead);
+        commandArgs[numRead] = currentRead;
+
+        numRead++;
+    }
+    if(numRead != argsNeeded) {
+        printf("Wrong number of command line arguements entered.\n");
+        printf("Usage: ./paint.out [num_rows num_cols]\n");
+    }
+}
+ */
+
+/*   === Andrew's Dynamic Overflow ====
 void getCommand(char** canvas, const int num_rows, const int num_columns, const char blank_space, char *command,
              int* row, int* col) {
     int num_args_read = 1;
@@ -76,4 +81,5 @@ void getArgsByCommand(char command, int *numArgsNeeded, int *charCount, int *int
         *intCount = 4;
     }
 }
+ */
 
