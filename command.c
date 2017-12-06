@@ -24,13 +24,7 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
         if(*command == 'w') {
             num_args_needed = 4;
             num_args_read = scanf(" %d %d %d %d", row_start, col_start, row_end, col_end);
-
-            if(num_args_read != num_args_needed) {
-                printf("NOOOOOOO");
-            } else {
-                printf("\n%c %d %d %d %d", *command, *row_start, *col_start, *row_end, *col_end);
-            }
-
+            printf("\n%c %d %d %d %d", *command, *row_start, *col_start, *row_end, *col_end);
         }
 
 
