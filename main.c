@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "canvas.h"
+#include "command.h"
 
 //void checkConditions(int argc, char **argv);
 
@@ -34,13 +35,16 @@ int main(int argc, char** argv) {
 
     int playerTurn = 0;
 
+    int rowPlayed;
+    int colPlayed;
+
     char c = ' ';
 
     //do {
 
         displayCanvas(canvas, numRows, numCols);
 
-        //getCommand(canvas, numRows, numCols, blankSpace, &command, &rowPlayed, &colPlayed);
+        getCommand(canvas, numRows, numCols, blankSpace, &command, &rowPlayed, &colPlayed);
         /*
         makeMove(board, rowPlayed, colPlayed, pieces[playerTurn]);
         playerTurn = changeTurn(playerTurn);
