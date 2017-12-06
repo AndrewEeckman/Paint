@@ -123,6 +123,60 @@ paint/fast:
 	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/build
 .PHONY : paint/fast
 
+canvas.o: canvas.c.o
+
+.PHONY : canvas.o
+
+# target to build an object file
+canvas.c.o:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/canvas.c.o
+.PHONY : canvas.c.o
+
+canvas.i: canvas.c.i
+
+.PHONY : canvas.i
+
+# target to preprocess a source file
+canvas.c.i:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/canvas.c.i
+.PHONY : canvas.c.i
+
+canvas.s: canvas.c.s
+
+.PHONY : canvas.s
+
+# target to generate assembly for a file
+canvas.c.s:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/canvas.c.s
+.PHONY : canvas.c.s
+
+command.o: command.c.o
+
+.PHONY : command.o
+
+# target to build an object file
+command.c.o:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/command.c.o
+.PHONY : command.c.o
+
+command.i: command.c.i
+
+.PHONY : command.i
+
+# target to preprocess a source file
+command.c.i:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/command.c.i
+.PHONY : command.c.i
+
+command.s: command.c.s
+
+.PHONY : command.s
+
+# target to generate assembly for a file
+command.c.s:
+	$(MAKE) -f CMakeFiles/paint.dir/build.make CMakeFiles/paint.dir/command.c.s
+.PHONY : command.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... paint"
+	@echo "... canvas.o"
+	@echo "... canvas.i"
+	@echo "... canvas.s"
+	@echo "... command.o"
+	@echo "... command.i"
+	@echo "... command.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/andreweeckman/CLionProjects/paint/canvas.c" "/Users/andreweeckman/CLionProjects/paint/cmake-build-debug/CMakeFiles/paint.dir/canvas.c.o"
+  "/Users/andreweeckman/CLionProjects/paint/command.c" "/Users/andreweeckman/CLionProjects/paint/cmake-build-debug/CMakeFiles/paint.dir/command.c.o"
   "/Users/andreweeckman/CLionProjects/paint/main.c" "/Users/andreweeckman/CLionProjects/paint/cmake-build-debug/CMakeFiles/paint.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/paint.dir/main.c.o"
+  "CMakeFiles/paint.dir/canvas.c.o"
+  "CMakeFiles/paint.dir/command.c.o"
   "paint.pdb"
   "paint"
 )

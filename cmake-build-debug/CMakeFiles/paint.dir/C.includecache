@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/andreweeckman/CLionProjects/paint/canvas.c
+stdlib.h
+-
+stdio.h
+-
+canvas.h
+/Users/andreweeckman/CLionProjects/paint/canvas.h
+
+/Users/andreweeckman/CLionProjects/paint/canvas.h
+
+/Users/andreweeckman/CLionProjects/paint/command.c
+command.h
+/Users/andreweeckman/CLionProjects/paint/command.h
+stdio.h
+-
+stdlib.h
+-
+
+/Users/andreweeckman/CLionProjects/paint/command.h
+
+/Users/andreweeckman/CLionProjects/paint/main.c
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+canvas.h
+/Users/andreweeckman/CLionProjects/paint/canvas.h
+command.h
+/Users/andreweeckman/CLionProjects/paint/command.h
+string.h
+-
+

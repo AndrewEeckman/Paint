@@ -78,6 +78,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/andreweeckman/CLionProjects/paint/canvas.c">
+			<Option target="paint"/>
+		</Unit>
+		<Unit filename="/Users/andreweeckman/CLionProjects/paint/canvas.h">
+			<Option target="paint"/>
+		</Unit>
+		<Unit filename="/Users/andreweeckman/CLionProjects/paint/command.c">
+			<Option target="paint"/>
+		</Unit>
+		<Unit filename="/Users/andreweeckman/CLionProjects/paint/command.h">
+			<Option target="paint"/>
+		</Unit>
 		<Unit filename="/Users/andreweeckman/CLionProjects/paint/main.c">
 			<Option target="paint"/>
 		</Unit>
