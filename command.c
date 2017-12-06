@@ -24,8 +24,8 @@ void printHelp(){
 }
 
 
-/*
- * === Tucker's Attempt at dynamic input ===
+
+/*  === Tucker's Attempt at dynamic input ===
 void commandChecker(char * commandArgs[], argsNeeded ) {
     numsRead = 0;
     commmandArgs[argsNeeded];
@@ -45,7 +45,7 @@ void commandChecker(char * commandArgs[], argsNeeded ) {
 }
  */
 
-/*   === Andrew's Dynamic Overflow ====
+// === Andrew's Dynamic Overflow ====
 void getCommand(char** canvas, const int num_rows, const int num_columns, const char blank_space, char *command,
              int* row, int* col) {
     int num_args_read = 1;
@@ -64,53 +64,23 @@ void getCommand(char** canvas, const int num_rows, const int num_columns, const 
         printf("Enter your command: ");
         scanf("%c", &(*command));
 
-        // Function to sort each command and assign it a specific number of chars, ints, and args needed
-        getArgsByCommand(*command, &num_args_needed, &charCount, &intCount);
+        int *x1, *y1, *x2, *y2;
 
-        // Creates an array containing all ints entered on the line
-        // FIXME: BASED ON NUM OF INTS ASSIGN VALUES TO POINTERS SUCH AS ROW AND COL AND COORDINATES
-        int arrayOfInts[intCount];
+        if(*command == 'w') {
+            num_args_needed = 4;
+            num_args_read = scanf(" %d %d %d %d", x1, y1, x2, y2);
 
-        for(int i = 1; i < num_args_needed; i++) {
-            if(charCount != 0) {
-                scanf(" %c", &comSubsetForAddDel);
-                i++;
-            }
-            if(intCount != 0) {
-                for(int j = 0; j < intCount; j++) {
-                    scanf(" %d", &arrayOfInts[j]);
-                    i++;
-                }
-            }
-        }
-
-        // FIXME: REMOVE, ONLY PRINTS THE LINE ENTERED
-        for(int i = 0; i < num_args_needed; i++) {
-            if(i == 0) {
-                printf("%c", *command);
-            } else if(i == 1 && charCount == 1) {
-                printf(" %c", comSubsetForAddDel);
-            } else if(i == 1 && charCount == 0){
-                printf(" %d", arrayOfInts[0]);
+            if(num_args_read != num_args_needed) {
+                printf("NOOOOOOO");
             } else {
-                printf(" %d", arrayOfInts[i-1]);
+                printf("\n%c %d %d %d %d", *command, *x1, *y1, *x2, *y2);
             }
+
         }
+
+
         printf("\n");
 
     //} while(!isValidCommand(num_args_read, num_args_needed, canvas, num_rows, num_columns, *col, *row, blank_space));
-}
 
-void getArgsByCommand(char command, int *numArgsNeeded, int *charCount, int *intCount) {
-    if(command == 'h') {
-        *numArgsNeeded = 1;
-        *charCount = 0;
-        *intCount = 0;
-    } else if(command == 'w') {
-        *numArgsNeeded = 5;
-        *charCount = 0;
-        *intCount = 4;
-    }
 }
- */
-
