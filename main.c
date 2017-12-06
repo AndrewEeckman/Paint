@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "canvas.h"
+#include "command.h"
 
 //void checkConditions(int argc, char **argv);
 

@@ -4,20 +4,42 @@
 
 #include "command.h"
 #include <stdio.h>
-void commandChecker(char * commandArgs[], argNums ) {
+
+void commandChecker(char * commandArgs[], argsNeeded ) {
     numsRead = 0;
-    commmandArgs[argNums];
+    commmandArgs[argsNeeded];
     char currentRead;
 
     while(currentRead != '\n'){
-        if()
+
         scanf(" %c", &currentRead);
         commandArgs[numRead] = currentRead;
 
         numRead++;
     }
+    if(numRead != argsNeeded) {
+        printf("Wrong number of command line arguements entered.\n");
+        printf("Usage: ./paint.out [num_rows num_cols]\n");
+    }
 }
 
+
+void quitProg() {
+       exit (0);
+}
+
+void printHelp(){
+    printf("Commands:\n");
+    printf("Help: h\n");
+    printf("Quit: q\n");
+    printf("Draw line: w row_start col_start row_end col_end\n");
+    printf("Resize: r num_rows num_cols\n");
+    printf("Add row or column: a [r | c] pos\n");
+    printf("Delete row or column: d [r | c] pos\n");
+    printf("Erase: e row col\n");
+    printf("Save: s file_name\n");
+    printf("Load: l file_name\n");
+}
 
 void getCommand(char** canvas, const int num_rows, const int num_columns, const char blank_space, char *command,
              int* row, int* col) {
