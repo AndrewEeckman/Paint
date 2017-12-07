@@ -5,8 +5,19 @@
 #ifndef PAINT_COMMAND_H
 #define PAINT_COMMAND_H
 
+#include <stdbool.h>
+
 void getCommand(char** canvas, const int numRows, const int numColumns, const char blank_space, char *command,
                 int *row_start, int *col_start, int *row_end, int *col_end, int *num_rows, int *num_cols, char *rowOrCol, int *pos, int *row, int *col, char fileName[]);
+
+bool isValidCommand(int num_args_read, int num_args_needed,
+                    char** canvas, const int numRows, const int numColumns, const char blank_space, char *command,
+                    int *row_start, int *col_start, int *row_end, int *col_end,
+                    int *num_rows, int *num_cols,
+                    char *rowOrCol, int *pos,
+                    int *row, int *col,
+                    char fileName[])
+
 void quitProg();
 void printHelp();
 
