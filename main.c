@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "canvas.h"
 #include "command.h"
+#include "draw.h"
 #include <string.h>
 
 bool inputChecker(int passArgs, char** argv);
@@ -52,7 +53,7 @@ int main(int argc, char** argv) {
     int num_cols = 0;   // r _ y
 
     // Variables used by the [a]dd and [d]elete commands
-    char rowOrCol;      // a r|c ___ // d r|c ___
+    char rowOrCol = ' ';      // a r|c ___ // d r|c ___
     int pos = 0;        // a ___ x|y // d ___ x|y
 
     // Variables used by the [e]rase command
@@ -60,13 +61,13 @@ int main(int argc, char** argv) {
     int col = 0;        // e _ c
 
     // Variables used by the [s]ave and [l]oad commands
-    char fileName[1024];    //(s|l) file_name
+    char fileName[1024] = " ";    //(s|l) file_name
 
     /* End of Variables used by Commands */
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     /* Begin Nerve Center */
-    //do {
+    do {
 
         displayCanvas(canvas, numRows, numCols);
 
@@ -74,14 +75,43 @@ int main(int argc, char** argv) {
                    &row_start, &col_start, &row_end, &col_end,
                    &num_rows, &num_cols,
                    &rowOrCol, &pos,
-                   &row, &col, &fileName
+                   &row, &col, &(*fileName)
                     );
+
+        printf("Command: %c\n", command);
+
+        printf("Variables used by the [w]rite command\n");
+        printf("row_start: %d\n", row_start);
+        printf("col_start: %d\n", col_start);
+        printf("row_end: %d\n", row_end);
+        printf("col_end: %d\n", col_end);
+
+        printf("Variables used by the [r]esize command\n");
+        printf("num_rows: %d\n", num_rows);
+        printf("num_cols: %d\n", num_cols);
+
+        printf("Variables used by the [a]dd and [d]elete commands\n");
+        printf("rowOrCol: %c\n", rowOrCol);
+        printf("pos: %d\n", pos);
+
+        printf("Variables used by the [e]rase command\n");
+        printf("row: %d\n", row);
+        printf("col: %d\n", col);
+
+        printf("Variables used by the [s]ave and [l]oad commands\n");
+        printf("fileName: %s", fileName);
+
+        if(command == 'w') {
+            determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
+        }
+
+
         /*
         makeMove(board, rowPlayed, colPlayed, pieces[playerTurn]);
         playerTurn = changeTurn(playerTurn);
          */
 
-    //} while(!quitProgram());
+    } while(command != 'q');
 
          /*
     displayBoard(board, numRows, numCols);
