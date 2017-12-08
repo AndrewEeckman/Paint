@@ -16,7 +16,8 @@ bool isValidCommand(int num_args_read, int num_args_needed,
                     int *num_rows, int *num_cols,
                     char *rowOrCol, int *pos,
                     int *row, int *col,
-                    char fileName[])
+
+                    char fileName[]);
 
 void quitProg();
 void printHelp();

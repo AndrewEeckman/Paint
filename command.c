@@ -3,6 +3,7 @@
 //
 
 #include "command.h"
+#include "inputValidation.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -23,7 +24,9 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
         printf("Enter your command: ");
         scanf("%c", &(*command));
 
-        if(*command == 'q') {
+
+        if (*command == 'q') {
+
             num_args_needed = 0;
             num_args_read = scanf("");
 
@@ -33,52 +36,53 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
             num_args_read = scanf("");
 
 
-        } else if(*command == 'w') {
+        } else if (*command == 'w') {
             num_args_needed = 4;
             num_args_read = scanf(" %d %d %d %d", row_start, col_start, row_end, col_end);
 
-            printf("\n%c %d %d %d %d", *command, *row_start, *col_start, *row_end, *col_end);
+            printf("\n%c %d %d %d %d\n", *command, *row_start, *col_start, *row_end, *col_end);
+
             /*
             *num_rows = NULL;    *row = NULL;
             *num_cols = NULL;    *col = NULL;
             *rowOrCol = NULL;    *fileName = NULL;
             *pos = NULL;
             */
-        } else if(*command == 'r') {
+
+        } else if (*command == 'r') {
             num_args_needed = 2;
             num_args_read = scanf(" %d %d", num_rows, num_cols);
 
-        }  else if(*command == 'a') {
+        } else if (*command == 'a') {
             num_args_needed = 2;
             num_args_read = scanf(" %c %d", rowOrCol, pos);
 
-        } else if(*command == 'd') {
+        } else if (*command == 'd') {
             num_args_needed = 2;
             num_args_read = scanf(" %c %d", rowOrCol, pos);
 
-        } else if(*command == 'e') {
+        } else if (*command == 'e') {
             num_args_needed = 2;
             num_args_read = scanf(" %d %d", row, col);
 
-        }  else if(*command == 's') {
+        } else if (*command == 's') {
             num_args_needed = 1;
             num_args_read = scanf(" %s", fileName);
 
-        }   else if(*command == 'l') {
+        } else if (*command == 'l') {
             num_args_needed = 1;
             num_args_read = scanf(" %s", fileName);
 
-        } else {
-            invalidCommand = true;
         }
 
-    } while(!isValidCommand(num_args_read, num_args_needed,
-                            canvas, numRows, numColumns, blank_space, command,
-                            row_start, col_start, row_end, col_end,
-                            num_rows, num_cols,
-                            rowOrCol, pos,
-                            row, col,
-                            fileName));
+    } while (!isValidCommand(num_args_read, num_args_needed,
+                                 canvas, numRows, numColumns, blank_space, command,
+                                 row_start, col_start, row_end, col_end,
+                                 num_rows, num_cols,
+                                 rowOrCol, pos,
+                                 row, col,
+                                 fileName));
+    printf("\n");
 
 }
 
@@ -89,7 +93,39 @@ bool isValidCommand(int num_args_read, int num_args_needed,
                     char *rowOrCol, int *pos,
                     int *row, int *col,
                     char fileName[]) {
-    return false;
+
+
+    if(!isValidFormat(num_args_read, num_args_needed)) {
+        return false;
+    }
+
+    if(*command == 'w') {
+        if(!(valueInBound(*row_start, numRows - 1, 0) && valueInBound(*col_start, numColumns - 1, 0)
+             && valueInBound(*row_end, numRows - 1, 0) && valueInBound(*col_end, numColumns - 1, 0))){
+            return false;
+        }
+    }
+
+    if(*command == 'e') {
+        if(!(valueInBound(*row, numRows - 1, 0) && valueInBound(*col, numColumns - 1, 0))) {
+            return false;
+        }
+    }
+
+    if(*command == 'a' || *command == 'd') {
+        if(!(*rowOrCol == 'r' || *rowOrCol == 'c')) {
+            return false;
+        }
+    }
+
+    if(!(*command == 'q' || *command == 'h' || *command == 'w' || *command == 'r' || *command == 'a'
+       || *command == 'd' || *command == 'e' || *command == 's' || *command == 'l')) {
+        return false;
+    }
+
+
+    return true;
+
 
 }
 
