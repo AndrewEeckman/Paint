@@ -1,33 +1,5 @@
 //
-// Created by Tucker on 12/6/17.
-//
-
-int pickABrush(int xCoord1, int yCoord1, int xCoord2, int yCoord2) { //Function in charge of picking draw funciton is going to be used
-    if () { //Horizontal line drawing
-
-    } else if (){ //Vertical Line Drawing
-
-    } else if (){
-        /*      /
-         *    /
-         *  /
-         */
-
-
-
-    } else if () {
-        /*\
-         * \
-         *  \
-         *   \
-         */
-
-        for(int i = xcoord1)
-
-
-
-
-// Created by Andrew Eeckman on 12/6/17.
+// Created by Tucker and Andrew Eeckman on 12/6/17.
 //
 
 #include "draw.h"
@@ -47,9 +19,9 @@ void determineLine(char** canvas, const int numRows, const int numCols, const ch
         slope = rise / run;
     }
 
-    if(slope == -1 && rise % run == 0) {
+    if(slope == 1 && rise % run == 0) {
         drawAscendingDiagonal(canvas, numRows, numCols, pieces, blankspace, row_start, col_start, row_end, col_end, rise, run);
-    } else if(slope == 1 && rise % run == 0) {
+    } else if(slope == -1 && rise % run == 0) {
         drawDescendingDiagonal(canvas, numRows, numCols, pieces, blankspace, row_start, col_start, row_end, col_end, rise, run);
     } else if(rise != 0 && run == 0) {
         drawVertical(canvas, numRows, numCols, pieces, blankspace, row_start, col_start, row_end, col_end, rise, run);
@@ -62,11 +34,34 @@ void determineLine(char** canvas, const int numRows, const int numCols, const ch
 
 void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                            const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
+        /*   /
+         *  /
+         * /
+        */
 
-}
+    for (int i = row_start; i <= row_end; i ++) {
+
+             if(canvas[numRows - i - 1][i] == blankspace) {
+                 canvas[numRows - i - 1][i] = pieces[0];
+             } else {
+                 canvas[numRows -i - 1][i] = pieces[2];
+             }
+    }}
 
 void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                             const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
+        /* \
+         *  \
+         *   \
+         */
+
+    for (int i = row_start; i <= row_end; i++) {
+        if(canvas[i + numRows - 1 - (rise)][i] == blankspace) {
+            canvas[i + numRows - 1 - (rise)][i] = pieces[3];
+        } else {
+            canvas[i + numRows - 1 - (rise)][i] = pieces[2];
+        }
+    }
 
 }
 

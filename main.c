@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     /* Variables used for canvas display */
 
     const char blankSpace = '*';    // For when nothing is drawn at (x, y)
-    const char pieces[] = "/-+\|";  // / and \ is diagonal, - is horizontal, | is vertical, + is intersecting
+    const char pieces[] = "/-+\\|";  // / and \ is diagonal, - is horizontal, | is vertical, + is intersecting
     const int numRows = r;          // How "Tall" the canvas is
     const int numCols = c;          // How "Wide" the canvas is
     char** canvas = createCanvas(numRows, numCols, blankSpace);
