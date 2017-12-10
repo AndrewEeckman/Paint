@@ -67,22 +67,22 @@ void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols,
 
 void drawHorizontal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                     const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
-    for(int i = 0; i < run; i ++) {
-        if(canvas[row_start][col_start + i] != blankspace) {
-            canvas[row_start][col_start + i] = '+';
+    for(int i = 0; i <= run; i ++) {
+        if(canvas[numRows - row_start - 1][col_start + i] != blankspace) {
+            canvas[numRows - row_start - 1][col_start + i] = '+';
         } else {
-            canvas[row_start][col_start + i] = '-';
+            canvas[numRows - row_start - 1][col_start + i] = '-';
         }
     }
 }
 
 void drawVertical(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                   const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
-    for(int i = 0; i < rise; i ++) {
-        if(canvas[row_start + i][col_start] != blankspace) {
-            canvas[row_start + i][col_start] = '+';
+    for(int i = 0; i <= rise; i ++) {
+        if(canvas[numRows - i - 1][col_start] != blankspace) {
+            canvas[numRows - i - 1][col_start] = '+';
         } else {
-            canvas[row_start + i][col_start] = '-';
+            canvas[numRows - i - 1][col_start] = '|';
         }
     }
 }
