@@ -34,6 +34,22 @@ char** createCanvas(const int num_rows, const int num_cols, const char blank_spa
     }
     return canvas;
 }
+
+void increaseCanvas (char** canvas, const int num_rows, const int num_cols, const int new_rows, const int new_cols, const char blank_space) {
+    canvas = (char**)realloc(canvas, new_rows * sizeof(char*));
+    for(int i = 0; i < num_rows; i ++) {
+        canvas[i] = (char*)realloc(canvas[i], new_cols* sizeof(char));
+    }
+    for(int j = num_rows; j < new_rows; j++) {
+        canvas[j] = (char*)realloc(canvas[j], new_cols * sizeof(char));
+        for (int newCol = num_cols; newCol < new_cols; newCol++) {
+            canvas[j][newCol] = blank_space;
+        }
+    }
+}
+
+
+
 void cleanUp(char*** canvas, const int num_rows, const int num_cols) {
     for(int row = 0; row < num_rows; ++row){
         free((*canvas)[row]);

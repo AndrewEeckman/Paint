@@ -4,6 +4,7 @@
 
 #include "command.h"
 #include "inputValidation.h"
+#include "canvas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -52,6 +53,7 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
         } else if (*command == 'r') {
             num_args_needed = 2;
             num_args_read = scanf(" %d %d", num_rows, num_cols);
+            increaseCanvas (canvas, numRows, numColumns, *num_rows, *num_cols, blank_space);
 
         } else if (*command == 'a') {
             num_args_needed = 2;
