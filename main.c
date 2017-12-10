@@ -133,5 +133,8 @@ bool inputChecker(int passArgs, char **argv) {
             return true;
         }
     }
-    return false;
+    printf("Wrong number of command line arguements entered.\n");
+    printf("Usage: ./paint.out [num_rows num_cols]\n");
+    exit(0);
+
 }
