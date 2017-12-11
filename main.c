@@ -4,6 +4,7 @@
 #include "canvas.h"
 #include "command.h"
 #include "draw.h"
+//#include "lineMod.h"
 #include <string.h>
 
 bool inputChecker(int passArgs, char** argv);
