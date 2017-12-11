@@ -103,6 +103,8 @@ int main(int argc, char** argv) {
 
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
+        } else if(command == 'r') {
+            increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
         }
 
 
@@ -132,9 +134,14 @@ bool inputChecker(int passArgs, char **argv) {
         if(x > 0 && y > 0) {
             return true;
         }
-    }
-    printf("Wrong number of command line arguements entered.\n");
-    printf("Usage: ./paint.out [num_rows num_cols]\n");
-    exit(0);
+    } else if(passArgs == 1) {
 
+        return false;
+
+    } else {
+
+        printf("Wrong number of command line arguements entered.\n");
+        printf("Usage: ./paint.out [num_rows num_cols]\n");
+        return false;
+    }
 }
