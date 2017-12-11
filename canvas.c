@@ -7,8 +7,8 @@ void displayCanvas(char** canvas, const int num_rows, const int num_cols) {
 
     printf("\n");
     // print board
-    for (int row = 0; row < num_rows; ++row) {
-        printf("%d ", (num_rows-row)-1);  // row header
+    for (int row = num_rows-1; row >= 0; row--) {
+        printf("%d ", row);  // row header
         for (int col = 0; col < num_cols; ++col) {
             printf("%c ", canvas[row][col]);
         }
