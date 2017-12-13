@@ -76,8 +76,6 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
             num_args_needed = 1;
             num_args_read = scanf(" %s", fileName);
 
-        } else {
-            printf("Unrecognized command. Type h for help.\n");
         }
 
     } while (!isValidCommand(num_args_read, num_args_needed,
@@ -125,6 +123,7 @@ bool isValidCommand(int num_args_read, int num_args_needed,
 
     if(!(*command == 'q' || *command == 'h' || *command == 'w' || *command == 'r' || *command == 'a'
        || *command == 'd' || *command == 'e' || *command == 's' || *command == 'l')) {
+        printf("Unrecognized command. Type h for help.\n");
         return false;
     }
 
