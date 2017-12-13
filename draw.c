@@ -39,14 +39,15 @@ void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, 
          * /
         */
 
-    for (int i = row_start; i <= row_end; i ++) {
 
+
+    for (int i = row_start; i <= row_end; i ++) {
              if(canvas[numRows - i - 1][i] == blankspace) {
-                 canvas[numRows - i - 1][i] = pieces[0];
              } else {
                  canvas[numRows -i - 1][i] = pieces[2];
              }
-    }}
+    }
+    }
 
 void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                             const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
@@ -54,6 +55,7 @@ void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols,
          *  \
          *   \
          */
+
 
     for (int i = row_start; i <= row_end; i++) {
         if(canvas[i + numRows - 1 - (rise)][i] == blankspace) {
