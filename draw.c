@@ -78,6 +78,18 @@ void drawHorizontal(char** canvas, const int numRows, const int numCols, const c
 
 void drawVertical(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
                   const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run) {
+    int tempRow = 0;
+    int rowS = row_start;
+    int rowE = row_end;
+
+    if(rowS > rowE) {
+        tempRow = rowE;
+        rowE = rowS;
+        rowS = tempRow;
+    }
+
+    rise = rowE - rowS;
+
     for(int i = 0; i <= rise; i ++) {
         if(canvas[numRows - i - 1][col_start] != blankspace) {
             canvas[numRows - i - 1][col_start] = '+';
