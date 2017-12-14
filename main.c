@@ -4,6 +4,7 @@
 #include "canvas.h"
 #include "command.h"
 #include "draw.h"
+#include "lineMod.h"
 //#include "lineMod.h"
 #include <string.h>
 
@@ -106,6 +107,8 @@ int main(int argc, char** argv) {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
         } else if(command == 'r') {
             increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
+        } else if(command == 'a') { //add row or collumn
+            row_or_col(canvas, int * num_rows, int * num_cols, const char blank_space, const char rowOrCol, const int lineNumber);
         }
 
 

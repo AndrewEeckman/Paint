@@ -5,7 +5,10 @@
 #ifndef PAINT_LINEMOD_H
 #define PAINT_LINEMOD_H
 
-void rowAdd (char ** canvas, int * num_rows, int * num_cols, int * new_rows, int * new_cols, const char blank_space, const int rowNumber);
+
+void row_or_col(char ** canvas, int * num_rows, int * num_cols, const char blank_space, const char rowOrCol, const int lineNumber);
+void colAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int colNumber);
+void rowAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int rowNumber);
 
 
 #endif //PAINT_LINEMOD_H

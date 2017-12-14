@@ -5,8 +5,21 @@
 #include "lineMod.h"
 #include <stdlib.h>
 
+void row_or_col(char ** canvas, int * num_rows, int * num_cols, const char blank_space, const char rowOrCol, const int lineNumber){
+    if(rowOrCol == 'c') {
+        colAdd( canvas, num_rows, num_cols,  blank_space, lineNumber);
+    } else if (rowOrCol == 'r') {
+        rowAdd( canvas, num_rows, num_cols,  blank_space, lineNumber);
+    } else {
 
-void rowAdd (char ** canvas, int * num_rows, int * num_cols, int * new_rows, int * new_cols, const char blank_space, const int rowNumber) {
+    }
+}
+
+void colAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int colNumber){
+
+}
+
+void rowAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int rowNumber) {
     char ** tempCanvas = (char**)malloc((*num_rows) * sizeof(char*));
         for(int i = 0; i <*num_rows; i++) {
             tempCanvas[i] = (char*)malloc((*num_cols) * sizeof(char*));
