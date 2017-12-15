@@ -84,7 +84,7 @@ void drawVertical(char** canvas, const int numRows, const int numCols, const cha
     int rowS = row_start;
     int rowE = row_end;
 
-    if(rowS > rowE) {
+    if (rowS > rowE) {
         tempRow = rowE;
         rowE = rowS;
         rowS = tempRow;
@@ -92,8 +92,8 @@ void drawVertical(char** canvas, const int numRows, const int numCols, const cha
 
     rise = rowE - rowS;
 
-    for(int i = 0; i <= rise; i ++) {
-        if(canvas[numRows - i - 1][col_start] != blankspace) {
+    for (int i = 0; i <= rise; i++) {
+        if (canvas[numRows - i - 1][col_start] != blankspace) {
             canvas[numRows - i - 1][col_start] = '+';
         } else {
             canvas[numRows - i - 1][col_start] = '|';
