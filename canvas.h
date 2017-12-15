@@ -5,9 +5,9 @@
 #ifndef PAINT_CANVAS_H
 #define PAINT_CANVAS_H
 
-void displayCanvas(char** canvas, const int num_rows, const int num_cols);
-char** createCanvas(const int num_rows, const int num_cols, const char blank_space);
-void increaseCanvas (char** canvas, const int num_rows, const int num_cols, const int new_rows, const int new_cols, const char blank_space);
-        void cleanUp(char*** canvas, const int num_rows, const int num_cols);
+void displayCanvas(char** canvas, int num_rows, int num_cols);
+char** createCanvas( int num_rows, int num_cols, const char blank_space);
+void increaseCanvas (char** canvas,  int num_rows,  int num_cols,  int new_rows, int new_cols, const char blank_space);
+void cleanUp(char*** canvas,  int num_rows,  int num_cols);
 
 #endif //PAINT_CANVAS_H

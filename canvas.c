@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "canvas.h"
 
-void displayCanvas(char** canvas, const int num_rows, const int num_cols) {
+void displayCanvas(char** canvas, int num_rows, int num_cols) {
     // print column headers
 
     printf("\n");
@@ -24,7 +24,7 @@ void displayCanvas(char** canvas, const int num_rows, const int num_cols) {
     printf("\n");
 }
 
-char** createCanvas(const int num_rows, const int num_cols, const char blank_space) {
+char** createCanvas( int num_rows,  int num_cols, const char blank_space) {
     char** canvas = (char**) malloc(num_rows * sizeof(char*));
     for(int row = 0; row < num_rows; ++row){
         canvas[row] = (char*) malloc(num_cols * sizeof(char));
@@ -35,7 +35,7 @@ char** createCanvas(const int num_rows, const int num_cols, const char blank_spa
     return canvas;
 }
 
-void increaseCanvas(char** canvas, const int num_rows, const int num_cols, const int new_rows, const int new_cols, const char blank_space) {
+void increaseCanvas(char** canvas,  int num_rows,  int num_cols,  int new_rows,  int new_cols, const char blank_space) {
     canvas = (char**)realloc(canvas, new_rows * sizeof(char*));
     for(int i = 0; i < num_rows; i ++) {
         canvas[i] = (char*)realloc(canvas[i], new_cols* sizeof(char));
@@ -50,7 +50,7 @@ void increaseCanvas(char** canvas, const int num_rows, const int num_cols, const
 
 
 
-void cleanUp(char*** canvas, const int num_rows, const int num_cols) {
+void cleanUp(char*** canvas,  int num_rows,  int num_cols) {
     for(int row = 0; row < num_rows; ++row){
         free((*canvas)[row]);
     }
