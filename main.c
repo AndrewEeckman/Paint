@@ -110,9 +110,11 @@ int main(int argc, char** argv) {
             rowsViewable = num_rows;
             colsViewable = num_cols;
             //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
-            increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
+            //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
         } else if(command == 'a') { //add row or collumn
             //row_or_col(canvas, int * num_rows, int * num_cols, const char blank_space, const char rowOrCol, const int lineNumber);
+        } else if(command == 'e') {
+            erase(canvas, numRows, numCols, pieces, blankSpace, row, col);
         }
 
 

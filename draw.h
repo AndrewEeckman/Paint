@@ -10,5 +10,6 @@ void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, 
 void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run);
 void drawHorizontal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run);
 void drawVertical(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row_start, const int col_start, const int row_end, const int col_end, int rise, int run);
+void erase(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row, const int col);
 
 #endif //PAINT_DRAW_H

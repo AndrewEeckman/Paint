@@ -134,3 +134,12 @@ void drawVertical(char** canvas, const int numRows, const int numCols, const cha
         }
     }
 }
+
+void erase(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row, const int col) {
+    if(canvas[numRows - row - 1][col] != blankspace) {
+        canvas[numRows - row - 1][col] = '*';
+    } else {
+        printf("Space already blank.\n");
+    }
+
+}
