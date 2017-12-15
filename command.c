@@ -138,10 +138,10 @@ void quitProg() {
 }
 
 void printHelp(){
-    printf("Commands:\n");
-    printf("Help: h\n");
-    printf("Quit: q\n");
-    printf("Draw line: w row_start col_start row_end col_end\n");
+    printf("Commands:\n"); //
+    printf("Help: h\n"); //Done
+    printf("Quit: q\n"); //Have yet to free all allocated space
+    printf("Draw line: w row_start col_start row_end col_end\n"); //done
     printf("Resize: r num_rows num_cols\n");
     printf("Add row or column: a [r | c] pos\n");
     printf("Delete row or column: d [r | c] pos\n");

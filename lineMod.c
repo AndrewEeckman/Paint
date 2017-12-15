@@ -17,29 +17,37 @@ void row_or_col(char ** canvas, int * num_rows, int * num_cols, const char blank
 
 void colAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int colNumber){
 
+
 }
 
 void rowAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int rowNumber) {
     char ** tempCanvas = (char**)malloc((*num_rows) * sizeof(char*));
         for(int i = 0; i <*num_rows; i++) {
-            tempCanvas[i] = (char*)malloc((*num_cols) * sizeof(char*));
+            tempCanvas[i] = (char*)malloc((*num_cols) * sizeof(char));
             for(int j = 0; j < *num_cols; j ++){
-                canvas[i][j] = tempCanvas[i][j];
+                tempCanvas[i][j] = canvas[i][j];
             }
         }
     canvas = (char**)realloc(canvas, (*num_rows+1)*sizeof(char*));
-    for( int row = 0; row <= (*num_rows + 1); row++) {
-        canvas[row] = (char*)realloc(canvas[row], sizeof(char*));
-            for (int col = 0; col <= *num_cols; col++) {
+    for( int row = 0; row < (*num_rows + 1); row++) {
+        canvas[row] = (char*)realloc(canvas[row], (*num_cols) * sizeof(char));
+            for (int col = 0; col < *num_cols; col++) {
                 if (row == rowNumber) {
                     canvas[row][col] = blank_space;
                 } else {
                     canvas[row][col] = tempCanvas[row][col];
                 }
             }
-        free(tempCanvas[row]);
+    }
+
+
+    for(int k = 0; k < *num_rows; k++) {
+        free(tempCanvas[k]);
+        tempCanvas[k] = NULL;
     }
     free(tempCanvas);
+    tempCanvas = NULL;
+
 }
 
 
