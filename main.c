@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 
     const char blankSpace = '*';    // For when nothing is drawn at (x, y)
     const char pieces[] = "/-+\\|";  // / and \ is diagonal, - is horizontal, | is vertical, + is intersecting
-    const int numRows = r;          // How "Tall" the canvas is
-    const int numCols = c;          // How "Wide" the canvas is
+    int numRows = r;          // How "Tall" the canvas is
+    int numCols = c;          // How "Wide" the canvas is
     char** canvas = createCanvas(numRows, numCols, blankSpace);
 
     /* End of variables used for canvas display */
@@ -63,9 +63,6 @@ int main(int argc, char** argv) {
     char fileName[1024] = " ";    //(s|l) file_name
 
     /* End of Variables used by Commands */
-
-    int rowsViewable = numRows;
-    int colsViewable = numCols;
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     /* Begin Nerve Center */
