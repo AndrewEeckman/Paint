@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 
     const char blankSpace = '*';    // For when nothing is drawn at (x, y)
     const char pieces[] = "/-+\\|";  // / and \ is diagonal, - is horizontal, | is vertical, + is intersecting
-    const int numRows = r;          // How "Tall" the canvas is
-    const int numCols = c;          // How "Wide" the canvas is
+    int numRows = r;          // How "Tall" the canvas is
+    int numCols = c;          // How "Wide" the canvas is
     char** canvas = createCanvas(numRows, numCols, blankSpace);
 
     /* End of variables used for canvas display */
@@ -64,14 +64,11 @@ int main(int argc, char** argv) {
 
     /* End of Variables used by Commands */
 
-    int rowsViewable = numRows;
-    int colsViewable = numCols;
-
     /////////////////////////////////////////////////////////////////////////////////////////////
     /* Begin Nerve Center */
     do {
 
-        displayCanvas(canvas, numRows, numCols, rowsViewable, colsViewable);
+        displayCanvas(canvas, numRows, numCols);
 
         getCommand(canvas, numRows, numCols, blankSpace, &command,
                    &row_start, &col_start, &row_end, &col_end,
@@ -107,8 +104,6 @@ int main(int argc, char** argv) {
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
         } else if(command == 'r') {
-            rowsViewable = num_rows;
-            colsViewable = num_cols;
             //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
             //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
         } else if(command == 'a') { //add row or collumn
