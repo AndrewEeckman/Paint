@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include<stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "canvas.h"
@@ -35,9 +35,6 @@ int main(int argc, char** argv) {
     const int numCols = c;          // How "Wide" the canvas is
     char** canvas = createCanvas(numRows, numCols, blankSpace);
 
-    // Function called to display the starting canvas
-    displayCanvas(canvas, numRows, numCols);
-
     /* End of variables used for canvas display */
     /////////////////////////////////////////////////////////////////////////////////////////////
     /* Beginning of Variables used by Commands */
@@ -67,11 +64,14 @@ int main(int argc, char** argv) {
 
     /* End of Variables used by Commands */
 
+    int rowsViewable = numRows;
+    int colsViewable = numCols;
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     /* Begin Nerve Center */
     do {
 
-        displayCanvas(canvas, numRows, numCols);
+        displayCanvas(canvas, numRows, numCols, rowsViewable, colsViewable);
 
         getCommand(canvas, numRows, numCols, blankSpace, &command,
                    &row_start, &col_start, &row_end, &col_end,
@@ -80,6 +80,7 @@ int main(int argc, char** argv) {
                    &row, &col, &(*fileName)
                     );
 
+        /*
         printf("Command: %c\n", command);
 
         printf("Variables used by the [w]rite command\n");
@@ -102,10 +103,13 @@ int main(int argc, char** argv) {
 
         printf("Variables used by the [s]ave and [l]oad commands\n");
         printf("fileName: %s", fileName);
-
+        */
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
         } else if(command == 'r') {
+            rowsViewable = num_rows;
+            colsViewable = num_cols;
+            //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
             increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
         } else if(command == 'a') { //add row or collumn
             row_or_col(canvas, &num_rows, &num_cols, blankSpace, rowOrCol, pos);

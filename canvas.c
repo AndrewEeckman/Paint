@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include "canvas.h"
 
-void displayCanvas(char** canvas, const int num_rows, const int num_cols) {
+void displayCanvas(char** canvas, const int num_rows, const int num_cols, const int rowsViewable, const int colsViewable) {
     // print column headers
 
     printf("\n");
     // print board
-    for (int row = 0; row < num_rows; ++row) {
+    for (int row = 0; row < rowsViewable; ++row) {
         printf("%d ", (num_rows-row)-1);  // row header
-        for (int col = 0; col < num_cols; ++col) {
+        for (int col = 0; col < colsViewable; ++col) {
             printf("%c ", canvas[row][col]);
         }
         printf("\n");
@@ -17,7 +17,7 @@ void displayCanvas(char** canvas, const int num_rows, const int num_cols) {
 
     printf("  ");
 
-    for(int col = 0; col < num_cols; ++col){
+    for(int col = 0; col < colsViewable; ++col){
         printf("%d ", col);
     }
 

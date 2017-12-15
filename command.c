@@ -42,8 +42,6 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
             num_args_needed = 4;
             num_args_read = scanf(" %d %d %d %d", row_start, col_start, row_end, col_end);
 
-            printf("\n%c %d %d %d %d\n", *command, *row_start, *col_start, *row_end, *col_end);
-
             /*
             *num_rows = NULL;    *row = NULL;
             *num_cols = NULL;    *col = NULL;

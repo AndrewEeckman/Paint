@@ -23,5 +23,5 @@ bool isValidFormat(const int numArgsRead, const int numArgsNeeded) {
 }
 
 bool valueInBound(const int val, const int upperBound, const int lowerBound) {
-  return val >= lowerBound && val <= upperBound;
+    return val >= lowerBound && val <= upperBound;
 }
