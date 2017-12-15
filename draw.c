@@ -38,6 +38,7 @@ void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, 
          *  /
          * /
         */
+
     if(row_end > row_start) {
         for (int i = row_start; i <= row_end; i++) {
 
@@ -87,8 +88,6 @@ void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols,
             }
         }
     }
-
-
 }
 
 void drawHorizontal(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace,
