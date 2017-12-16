@@ -2,9 +2,10 @@
 // Created by Tucker and Andrew Eeckman on 12/6/17.
 //
 
-#include "draw.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "draw.h"
 
 void determineLine(char** canvas, const int numRows, const int numCols, const char* pieces, const char blankspace, const int row_start, const int col_start, const int row_end, const int col_end) {
     int rise = 0;

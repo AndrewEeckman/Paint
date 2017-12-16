@@ -1,12 +1,13 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+
 #include "canvas.h"
 #include "command.h"
 #include "draw.h"
 #include "lineMod.h"
 #include "inputValidation.h"
-#include <string.h>
 
 bool inputChecker(int passArgs, char** argv);
 
@@ -77,60 +78,54 @@ int main(int argc, char** argv) {
                    &row, &col, &(*fileName)
                     );
 
-        /*
-        printf("Command: %c\n", command);
-
-        printf("Variables used by the [w]rite command\n");
-        printf("row_start: %d\n", row_start);
-        printf("col_start: %d\n", col_start);
-        printf("row_end: %d\n", row_end);
-        printf("col_end: %d\n", col_end);
-
-        printf("Variables used by the [r]esize command\n");
-        printf("num_rows: %d\n", num_rows);
-        printf("num_cols: %d\n", num_cols);
-
-        printf("Variables used by the [a]dd and [d]elete commands\n");
-        printf("rowOrCol: %c\n", rowOrCol);
-        printf("pos: %d\n", pos);
-
-        printf("Variables used by the [e]rase command\n");
-        printf("row: %d\n", row);
-        printf("col: %d\n", col);
-
-        printf("Variables used by the [s]ave and [l]oad commands\n");
-        printf("fileName: %s", fileName);
-        */
-
+        //Write Command
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
-        } else if(command == 'r') {
-            //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
-            //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
-        } else if(command == 'a') { //add row or collumn
-            row_or_col(canvas, numRows, numCols, blankSpace, rowOrCol, pos);
-                if (rowOrCol == 'r'){
-                    numRows++;
-                } else if(rowOrCol == 'c') {
-                    numCols++;
-                }
-        } else if(command == 'e') {
+        }
+
+        //Erase Command
+        else if(command == 'e') {
             erase(canvas, numRows, numCols, pieces, blankSpace, row, col);
 
         }
 
+        //Resize Command
+        else if(command == 'r') {
+            increaseCanvas(canvas, &numRows,  &numCols,  &num_rows,  &num_cols, blankSpace);
+        }
 
-        /*
-        makeMove(board, rowPlayed, colPlayed, pieces[playerTurn]);
-        playerTurn = changeTurn(playerTurn);
-         */
+        //Add Command
+        else if(command == 'a') { //add row or collumn
+            if (rowOrCol == 'r'){
+                rowAdd(canvas, &numRows, &numCols, blankSpace, pos);
+            } else if(rowOrCol == 'c') {
+                colAdd(canvas, &numRows, &numCols, blankSpace, pos);
+            }
+
+        }
+
+        //Delete Command
+        else if(command == 'd') {
+            if(rowOrCol == 'r') {
+                deleteRow(canvas, &numRows, &numCols, pos);
+            } else if(rowOrCol == c) {
+                deleteCol(canvas, &numRows, &numCols, pos);
+            }
+        }
+
+        //Save Command
+        else if(command == 's') {
+
+        }
+
+        //Load Command
+        else if(command == 'l') {
+
+        }
+
 
     } while(command != 'q');
 
-         /*
-    displayBoard(board, numRows, numCols);
-    declareEndResult(playerTurn, board, numRows, numCols, blankSpace, w);
-         */
 
     cleanUp(&canvas, numRows, numCols);
 

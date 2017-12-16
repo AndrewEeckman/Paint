@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "canvas.h"
 
 void displayCanvas(char** canvas, int num_rows, int num_cols) {
@@ -35,17 +36,33 @@ char** createCanvas( int num_rows,  int num_cols, const char blank_space) {
     return canvas;
 }
 
-void increaseCanvas(char** canvas,  int num_rows,  int num_cols,  int new_rows,  int new_cols, const char blank_space) {
-    canvas = (char**)realloc(canvas, new_rows * sizeof(char*));
-    for(int i = 0; i < num_rows; i ++) {
-        canvas[i] = (char*)realloc(canvas[i], new_cols* sizeof(char));
+
+//FIXME: Exception
+void increaseCanvas(char** canvas,  int *num_rows,  int *num_cols,  int *new_rows,  int *new_cols, const char blank_space) {
+    int i, j;
+
+    for(i = (*new_rows); i < (*num_rows); i++) {
+        free(canvas[i]);
+        *canvas[i] = NULL;
     }
-    for(int j = num_rows; j < new_rows; j++) {
-        canvas[j] = (char*)realloc(canvas[j], new_cols * sizeof(char));
-        for (int newCol = num_cols; newCol < new_cols; newCol++) {
-            canvas[j][newCol] = blank_space;
+
+    canvas = (char**)realloc(canvas, (*new_rows) * sizeof(char*));
+    for(i = *num_rows; i < *new_rows; i++) {
+        canvas[i] = (char*)malloc((*new_cols)*sizeof(char));
+        for(j = 0; j < *new_cols; j++) {
+            canvas[i][j] = blank_space;
         }
     }
+
+    for(i = 0; i < *new_rows; i++) {
+        canvas[i] = (char*)realloc(canvas[i], *new_cols * sizeof(char));
+        for(j = *num_cols; j < *new_cols; j++) {
+            canvas[i][j] = blank_space;
+        }
+    }
+
+    *num_cols = *new_cols;
+    *num_rows = *new_rows;
 }
 
 

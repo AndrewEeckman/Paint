@@ -4,81 +4,75 @@
 
 #include "lineMod.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-void row_or_col(char ** canvas, int num_rows, int num_cols, const char blank_space, const char rowOrCol, const int lineNumber){
-    if(rowOrCol == 'c') {
-        colAdd( canvas, num_rows, num_cols,  blank_space, lineNumber);
-    } else if (rowOrCol == 'r') {
-        rowAdd( canvas, num_rows, num_cols,  blank_space, lineNumber);
-    } else {
 
+
+void colAdd (char ** canvas, int* num_rows, int * num_cols, const char blank_space, const int colNumber){
+
+    (*num_cols)++;
+
+    int i, j;
+
+    for(i = 0; i < (*num_rows); i++) {
+        canvas[i] = (char*)realloc(canvas[i], *num_cols * sizeof(char));
+
+        for(j = (*num_cols)-1; j > colNumber; j--) {
+            canvas[i][j] = canvas[i][j-1];
+        }
+
+        canvas[i][j] = blank_space;
     }
 }
-//Not done yet...
 
-void colAdd (char ** canvas, int * num_rows, int * num_cols, const char blank_space, const int colNumber){
-    /*
-    char ** tempCanvas = (char**)malloc((*num_rows) * sizeof(char*));
-    for(int i = 0; i <*num_rows; i++) {
-        tempCanvas[i] = (char*)malloc((*num_cols + 1) * sizeof(char));
-        for(int j = 0; j < *num_cols; j ++){
-            tempCanvas[i][j] = canvas[i][j];
-        }
-    }
-    canvas = (char**)realloc(canvas, (*num_rows+1)*sizeof(char*));
-    for( int row = 0; row < (*num_rows + 1); row++) {
-        canvas[row] = (char*)realloc(canvas[row], (*num_cols) * sizeof(char));
-        for (int col = 0; col < *num_cols; col++) {
-            if (row == rowNumber) {
-                canvas[row][col] = blank_space;
-            } else {
-                canvas[row][col] = tempCanvas[row][col];
-            }
-        }
+//FIXME: Memory out of Bound
+void rowAdd (char** canvas, int *num_rows, int *num_cols, const char blank_space, const int rowNumber) {
+
+    (*num_rows)++;
+
+    canvas = (char**)realloc(canvas, *num_rows * sizeof(char*));
+
+    int i, j;
+
+    for(i = *num_rows - 1; i > rowNumber; i--) {
+         canvas[i] = canvas[i - 1];
     }
 
-
-    for(int k = 0; k < *num_rows; k++) {
-        free(tempCanvas[k]);
-        tempCanvas[k] = NULL;
+    canvas[rowNumber] = (char*)malloc(*num_cols * sizeof(char));
+    for(j = 0; j < *num_cols; j++) {
+        canvas[i][j] = blank_space;
     }
-    free(tempCanvas);
-    tempCanvas = NULL;
-*/
+}
+
+void deleteRow(char ** canvas, int *numRows, int *numCols, int pos) {
+
+    free(canvas[(*numRows-1)-pos]);
+    (*numRows)--;
+    printf("numrows = %d\n", *numRows);
+    for(int i = pos; i < (*numRows); i++) {
+        canvas[i] = canvas[i + 1];
+    }
+
+    canvas = (char**)realloc(canvas, (*numRows) * sizeof(char*));
 }
 
 
+//FIXME: Doesn't work
+void deleteCol(char ** canvas, int *numRows, int *numCols, int pos) {
 
+    for(int row = 0; row < (*numRows); row++) {
+        canvas[row][pos] = NULL;
+    }
 
-void rowAdd (char ** canvas,  int  num_rows,  int  num_cols, const char blank_space, const int rowNumber) {
-    int postAddLineShift = 0;
-    char ** tempCanvas = (char**)malloc((num_rows) * sizeof(char*));
-        for(int i = 0; i <num_rows; i++) {
-            tempCanvas[i] = (char*)malloc((num_cols) * sizeof(char));
-            for(int j = 0; j < num_cols; j ++){
-                tempCanvas[i][j] = canvas[i][j];
-            }
+    (*numCols)--;
+
+    for(int i = 0; i < (*numRows); i++) {
+        for(int j = pos; j < *numCols; j++) {
+            canvas[i][j] = canvas[i][j+1];
         }
-    canvas = (char**)realloc(canvas, (num_rows+1)*sizeof(char*));
-    for( int row = 0; row < (num_rows + 1); row++) {
-        canvas[row] = (char*)realloc(canvas[row], (num_cols) * sizeof(char));
-            for (int col = 0; col < num_cols; col++) {
-                if (row == rowNumber) {
-                    canvas[row][col] = blank_space;
-                    postAddLineShift = 1;
-                } else {
-                    canvas[row][col] = tempCanvas[row - postAddLineShift][col];
-                }
-            }
-    }
 
-    for(int k = 0; k < num_rows; k++) {
-        free(tempCanvas[k]);
-        tempCanvas[k] = NULL;
+        canvas[i] = (char*)realloc(canvas[i], (*numCols) * sizeof(char));
     }
-    free(tempCanvas);
-    tempCanvas = NULL;
-
 }
 
 
