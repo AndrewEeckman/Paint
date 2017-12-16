@@ -7,7 +7,7 @@
 #include "command.h"
 #include "draw.h"
 #include "lineMod.h"
-#include "inputValidation.h"
+#include "fileIO.h"
 
 bool inputChecker(int passArgs, char** argv);
 
@@ -115,12 +115,12 @@ int main(int argc, char** argv) {
 
         //Save Command
         else if(command == 's') {
-
+            saveToFile(canvas, &numRows, &numCols, fileName);
         }
 
         //Load Command
         else if(command == 'l') {
-
+            loadSelectFile(canvas, &numRows, &numCols, fileName);
         }
 
 

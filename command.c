@@ -8,7 +8,6 @@
 
 #include "command.h"
 #include "inputValidation.h"
-#include "canvas.h"
 
 
 void getCommand(char** canvas, int numRows, int numColumns, const char blank_space, char *command,

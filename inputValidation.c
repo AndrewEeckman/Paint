@@ -2,10 +2,11 @@
 // Created by Andrew Eeckman on 12/6/17.
 //
 
-#include "inputValidation.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
+
+#include "inputValidation.h"
 
 bool isValidFormat(const int numArgsRead, const int numArgsNeeded) {
     bool isValid = numArgsRead == numArgsNeeded;

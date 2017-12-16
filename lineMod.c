@@ -2,11 +2,10 @@
 // Created by Tucker on 12/11/17.
 //
 
-#include "lineMod.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-
+#include "lineMod.h"
 
 void colAdd (char ** canvas, int* num_rows, int * num_cols, const char blank_space, const int colNumber){
 
@@ -26,11 +25,11 @@ void colAdd (char ** canvas, int* num_rows, int * num_cols, const char blank_spa
 }
 
 //FIXME: Memory out of Bound
-void rowAdd (char** canvas, int *num_rows, int *num_cols, const char blank_space, const int rowNumber) {
+void rowAdd(char** canvas, int *num_rows, int *num_cols, const char blank_space, const int rowNumber) {
 
     (*num_rows)++;
 
-    canvas = (char**)realloc(canvas, *num_rows * sizeof(char*));
+    canvas = (char**)realloc(canvas, (*num_rows+1) * sizeof(char*));
 
     int i, j;
 
@@ -44,7 +43,7 @@ void rowAdd (char** canvas, int *num_rows, int *num_cols, const char blank_space
     }
 }
 
-void deleteRow(char ** canvas, int *numRows, int *numCols, int pos) {
+void deleteRow(char** canvas, int *numRows, int *numCols, int pos) {
 
     free(canvas[(*numRows-1)-pos]);
     (*numRows)--;
