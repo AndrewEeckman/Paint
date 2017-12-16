@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
                    &row, &col, &(*fileName)
                     );
 
-
+        /*
         printf("Command: %c\n", command);
 
         printf("Variables used by the [w]rite command\n");
@@ -100,6 +100,7 @@ int main(int argc, char** argv) {
 
         printf("Variables used by the [s]ave and [l]oad commands\n");
         printf("fileName: %s", fileName);
+        */
 
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);

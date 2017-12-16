@@ -68,11 +68,9 @@ void rowAdd (char ** canvas,  int  num_rows,  int  num_cols, const char blank_sp
                     postAddLineShift = 1;
                 } else {
                     canvas[row][col] = tempCanvas[row - postAddLineShift][col];
-
                 }
             }
     }
-
 
     for(int k = 0; k < num_rows; k++) {
         free(tempCanvas[k]);
