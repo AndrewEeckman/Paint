@@ -101,15 +101,22 @@ int main(int argc, char** argv) {
         printf("Variables used by the [s]ave and [l]oad commands\n");
         printf("fileName: %s", fileName);
         */
+
         if(command == 'w') {
             determineLine(canvas, numRows, numCols, pieces, blankSpace, row_start, col_start, row_end, col_end);
         } else if(command == 'r') {
             //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
             //increaseCanvas(canvas, &numRows, &numCols, num_rows, num_cols, blankSpace);
         } else if(command == 'a') { //add row or collumn
-            row_or_col(canvas, &num_rows, &num_cols, blankSpace, rowOrCol, pos);
+            row_or_col(canvas, numRows, numCols, blankSpace, rowOrCol, pos);
+                if (rowOrCol == 'r'){
+                    numRows++;
+                } else if(rowOrCol == 'c') {
+                    numCols++;
+                }
         } else if(command == 'e') {
             erase(canvas, numRows, numCols, pieces, blankSpace, row, col);
+
         }
 
 
