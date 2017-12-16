@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "canvas.h"
 #include "command.h"
@@ -107,9 +108,9 @@ int main(int argc, char** argv) {
         //Delete Command
         else if(command == 'd') {
             if(rowOrCol == 'r') {
-                deleteRow(canvas, &numRows, &numCols, pos);
+                deleteRow(canvas, &numRows, &numCols, &pos);
             } else if(rowOrCol == c) {
-                deleteCol(canvas, &numRows, &numCols, pos);
+                deleteCol(canvas, &numRows, &numCols, &pos);
             }
         }
 
@@ -134,21 +135,50 @@ int main(int argc, char** argv) {
 
 bool inputChecker(int passArgs, char **argv) {
 
-    if (passArgs == 3) {
+    if(passArgs == 1)
+    {
+        return false;
+    }
+    else if(passArgs == 3)
+    {
+        int x = atoi(argv[1]);
+        int y = atoi(argv[2]);
+        if (isalpha(*argv[1])) {
+            printf("The number of rows is not an integer.\nMaking default board of 10 X 10.");
+            return false;
+        } else if (isalpha(*argv[2])) {
+            printf("The number of columns is not an integer.\nMaking default board of 10 X 10.");
+            return false;
+        }
+
+        if (y < 1) {
+            printf("The number of columns is less than 1.\nMaking default board of 10 X 10.");
+            return false;
+        } else if (x < 1) {
+            printf("The number of rows is less than 1.\nMaking default board of 10 X 10.");
+            return false;
+        }
+
+        return true;
+
+    } else if(passArgs != 4) {
+        printf("Wrong number of command line arguments entered.\nUsage: ./paint.out [num_rows num_cols]\nMaking default board of 10 X 10.");
+        return false;
+    } else if(strlen(argv[2]) > 3 || strlen(argv[3]) > 3) {
+        printf("Wrong number of command line arguements entered.\nUsage: ./paint.out [num_rows num_cols]\nMaking default board of 10 X 10.");
+        return false;
+    } else {
         int x = atoi(argv[1]);
         int y = atoi(argv[2]);
 
-        if(x > 0 && y > 0) {
-            return true;
+        if (y < 1) {
+            printf("The number of columns is less than 1.\nMaking default board of 10 X 10.");
+            return false;
+        } else if (x < 1) {
+            printf("The number of rows is less than 1.\nMaking default board of 10 X 10.");
+            return false;
         }
-    } else if(passArgs == 1) {
 
-        return false;
-
-    } else {
-
-        printf("Wrong number of command line arguements entered.\n");
-        printf("Usage: ./paint.out [num_rows num_cols]\n");
-        return false;
+        return true;
     }
 }

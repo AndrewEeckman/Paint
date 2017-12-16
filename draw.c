@@ -29,7 +29,7 @@ void determineLine(char** canvas, const int numRows, const int numCols, const ch
     } else if(rise == 0 && run != 0) {
         drawHorizontal(canvas, numRows, numCols, pieces, blankspace, row_start, col_start, row_end, col_end, rise, run);
     } else {
-        printf("Invalid line attempted to be drawn");
+        printf("Cannot draw the line as it is not straight.\n");
     }
 }
 
@@ -43,7 +43,7 @@ void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, 
     if(row_end > row_start) {
         for (int i = row_start; i <= row_end; i++) {
 
-            if (canvas[numRows - i - 1][col_start + i - (row_start)] == blankspace) {
+            if (canvas[numRows - i - 1][col_start + i - (row_start)] == blankspace && canvas[numRows - i - 1][col_start + i - (row_start)] == '/') {
                 canvas[numRows - i - 1][col_start + i - (row_start)] = pieces[0];
             } else {
                 canvas[numRows - i - 1][col_start + i - (row_start)] = pieces[2];
@@ -52,7 +52,7 @@ void drawAscendingDiagonal(char** canvas, const int numRows, const int numCols, 
     } else if(row_start > row_end) {
         for (int i = row_end; i <= row_start; i++) {
 
-            if (canvas[numRows - i - 1][col_start + i - (row_start)] == blankspace) {
+            if (canvas[numRows - i - 1][col_start + i - (row_start)] == blankspace && canvas[numRows - i - 1][col_start + i - (row_start)] == '/') {
                 canvas[numRows - i - 1][col_start + i - (row_start)] = pieces[0];
             } else {
                 canvas[numRows - i - 1][col_start + i - (row_start)] = pieces[2];
@@ -72,7 +72,7 @@ void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols,
         rise = row_start - row_end;
 
         for (int i = row_end; i <= row_start; i++) {
-            if (canvas[numRows - row_start - 1 + i][col_start + i] != blankspace) {
+            if (canvas[numRows - row_start - 1 + i][col_start + i] != blankspace && canvas[numRows - row_start - 1 - i][col_start - i] != '\\') {
                 canvas[numRows - row_start - 1 + i][col_start + i] = '+';
             } else {
                 canvas[numRows - row_start - 1 + i][col_start + i] = '\\';
@@ -82,7 +82,7 @@ void drawDescendingDiagonal(char** canvas, const int numRows, const int numCols,
         rise = row_end - row_start;
 
         for (int i = row_start; i <= row_end; i++) {
-            if (canvas[numRows - row_start - 1 - i][col_start - i] != blankspace) {
+            if (canvas[numRows - row_start - 1 - i][col_start - i] != blankspace && canvas[numRows - row_start - 1 - i][col_start - i] != '\\') {
                 canvas[numRows - row_start - 1 - i][col_start - i] = '+';
             } else {
                 canvas[numRows - row_start - 1 - i][col_start - i] = '\\';
@@ -96,7 +96,7 @@ void drawHorizontal(char** canvas, const int numRows, const int numCols, const c
 
     if(col_start > col_end) {
         for (int i = col_end; i <= col_start; i++) {
-            if (canvas[numRows - row_start - 1][col_end + i] != blankspace) {
+            if (canvas[numRows - row_start - 1][col_end + i] != blankspace && canvas[numRows - row_start - 1][col_end + i] != '-') {
                 canvas[numRows - row_start - 1][col_end + i] = '+';
             } else if (canvas[numRows - row_start - 1][col_end + i] == blankspace) {
                 canvas[numRows - row_start - 1][col_end + i] = '-';
@@ -104,7 +104,7 @@ void drawHorizontal(char** canvas, const int numRows, const int numCols, const c
         }
     } else if(col_end > col_start) {
         for (int i = 0; i <= run; i++) {
-            if (canvas[numRows - row_start - 1][col_start + i] != blankspace) {
+            if (canvas[numRows - row_start - 1][col_start + i] != blankspace && canvas[numRows - row_start - 1][col_start + i] != '-') {
                 canvas[numRows - row_start - 1][col_start + i] = '+';
             } else if (canvas[numRows - row_start - 1][col_start + i] == blankspace) {
                 canvas[numRows - row_start - 1][col_start + i] = '-';
@@ -128,7 +128,7 @@ void drawVertical(char** canvas, const int numRows, const int numCols, const cha
     rise = rowE - rowS;
 
     for (int i = 0; i <= rise; i++) {
-        if (canvas[numRows - i - 1][col_start] != blankspace) {
+        if (canvas[numRows - i - 1][col_start] != blankspace && canvas[numRows - i - 1][col_start] != '|') {
             canvas[numRows - i - 1][col_start] = '+';
         } else {
             canvas[numRows - i - 1][col_start] = '|';

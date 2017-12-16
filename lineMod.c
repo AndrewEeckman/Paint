@@ -6,6 +6,8 @@
 #include <stdio.h>
 
 #include "lineMod.h"
+#include "canvas.h"
+
 
 void colAdd (char ** canvas, int* num_rows, int * num_cols, const char blank_space, const int colNumber){
 
@@ -22,6 +24,8 @@ void colAdd (char ** canvas, int* num_rows, int * num_cols, const char blank_spa
 
         canvas[i][j] = blank_space;
     }
+
+    createCanvas(*num_rows, *num_cols, blank_space);
 }
 
 //FIXME: Memory out of Bound
@@ -41,37 +45,42 @@ void rowAdd(char** canvas, int *num_rows, int *num_cols, const char blank_space,
     for(j = 0; j < *num_cols; j++) {
         canvas[i][j] = blank_space;
     }
+
+    createCanvas(*num_rows, *num_cols, blank_space);
 }
 
-void deleteRow(char** canvas, int *numRows, int *numCols, int pos) {
+void deleteRow(char** canvas, int *numRows, int *numCols, int *pos) {
 
-    free(canvas[(*numRows-1)-pos]);
+    free(canvas[(*numRows-1)-*pos]);
     (*numRows)--;
-    printf("numrows = %d\n", *numRows);
-    for(int i = pos; i < (*numRows); i++) {
+    for(int i = (*pos); i < (*numRows); i++) {
         canvas[i] = canvas[i + 1];
     }
 
     canvas = (char**)realloc(canvas, (*numRows) * sizeof(char*));
+
+    createCanvas(*numRows, *numCols, '*');
 }
 
 
 //FIXME: Doesn't work
-void deleteCol(char ** canvas, int *numRows, int *numCols, int pos) {
+void deleteCol(char ** canvas, int *numRows, int *numCols, int *pos) {
 
-    for(int row = 0; row < (*numRows); row++) {
-        canvas[row][pos] = NULL;
+    for(int i = 0; i < *numRows; i++) {
+        free(canvas[i][*pos]);
     }
-
     (*numCols)--;
 
     for(int i = 0; i < (*numRows); i++) {
-        for(int j = pos; j < *numCols; j++) {
+        for(int j = (*pos); j < *numCols; j++) {
             canvas[i][j] = canvas[i][j+1];
         }
 
         canvas[i] = (char*)realloc(canvas[i], (*numCols) * sizeof(char));
     }
+
+
+    createCanvas(*numRows, *numCols, '*');
 }
 
 
