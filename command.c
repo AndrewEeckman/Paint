@@ -19,8 +19,6 @@ void getCommand(char** canvas, const int numRows, const int numColumns, const ch
     int num_args_read = 0;
     int num_args_needed = 0;
 
-    bool invalidCommand = false;
-
     do {
         printf("Enter your command: ");
         scanf("%c", &(*command));
